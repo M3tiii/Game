@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta charset="utf-8">
+		<title>NodeGameScreen</title>
+		<style>
+			body{
+				margin:0;
+				padding: 0;
+				overflow: hidden;
+				background-color: #2E434B;
+			}
+			canvas{
+				position: absolute;
+				top:0;
+				left:0;
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript" src="http://localhost:8081/socket.io/socket.io.js"></script>
+		<script type="text/javascript" src="app/js/Player.js"></script>
+		<script type="text/javascript" src="app/js/ZombieNew.js"></script>
+		<script type="text/javascript" src="app/js/Board.js"></script>
+		<script type="text/javascript" src="app/js/game.js"></script>
+		<script type="text/javascript">
+			var socket = io.connect();
+
+			socket.on('new', function(data){
+				data = new Player(data);
+			});
+			socket.on('key_down', function(data){
+				VAR.user_id = data.id;
+		        VAR.move = data.move;
+		        VAR.down = true;
+		        //console.log(data.id + ' ' + VAR.move + ' ' + VAR.down);
+		    });
+		    socket.on('key_up', function(data){
+		        VAR.down=false; 
+		    });
+			//
+		</script>
+
+	</body>
+</html>
+
+
